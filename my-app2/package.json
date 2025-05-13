@@ -1,9 +1,8 @@
-{
-  "name": "my-app2",
+{  "name": "my-app2",
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://jagmeet29.github.io/reactmarkdown",
+  "homepage": "https://jagmeet29.github.io/reactmarkdown/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
