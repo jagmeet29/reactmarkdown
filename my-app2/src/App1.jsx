@@ -103,13 +103,13 @@ function parseContent(content) {
   let inQ = false, inA = false;
   let q = '', a = '';
   content.split('\n').forEach(line => {
-    if (line.trim() === ':::res-ques') {
+    if (line.trim() === ':: :question:') {
       if (current.content.trim()) { blocks.push({ ...current }); current.content = ''; }
       inQ = true; return;
     }
-    if (line.trim() === ':::ans') { inA = true; return; }
-    if (line.trim() === ':::' && inQ) { inQ = false; blocks.push({ type: 'question', content: q.trim() }); q = ''; return; }
-    if (line.trim() === ':::' && inA) { inA = false; blocks.push({ type: 'answer', content: a.trim() }); a = ''; return; }
+    if (line.trim() === ':: :ok_hand:') { inA = true; return; }
+    if (line.trim() === ':: :' && inQ) { inQ = false; blocks.push({ type: 'question', content: q.trim() }); q = ''; return; }
+    if (line.trim() === ':: :' && inA) { inA = false; blocks.push({ type: 'answer', content: a.trim() }); a = ''; return; }
     if (inQ) { q += line + '\n'; }
     else if (inA) { a += line + '\n'; }
     else { current.content += line + '\n'; }
@@ -255,7 +255,16 @@ function TopicDetail() {
           );
         }
         if (b.type === 'question') {
-          return <div key={i} className="res-ques ">{b.content}</div>;
+          return (
+            <div key={i} className="res-ques">
+              <ReactMarkdown
+                remarkPlugins={[remarkMath, remarkGfm]}
+                rehypePlugins={[rehypeKatex, rehypeRaw]}
+              >
+                {b.content}
+              </ReactMarkdown>
+            </div>
+          );
         }
         if (b.type === 'answer') {
           return <AnswerBlock key={i} answer={b.content} />;

@@ -39,7 +39,7 @@ function App() {
       let currentQuestion = "";
       let currentAnswer = "";
       lines.forEach(line => {
-        if (line.trim() === ":::res-ques") {
+        if (line.trim() === ":::question:") {
           // Add any previous text block
           if (currentBlock.content.trim()) {
             contentBlocks.push({...currentBlock});
@@ -48,7 +48,7 @@ function App() {
           inResQues = true;
           return;
         }
-        if (line.trim() === ":::ans") {
+        if (line.trim() === ":::ok_hand:") {
           inAns = true;
           return;
         }
@@ -104,7 +104,12 @@ function App() {
         } else if (block.type === "question") {
           return (
             <div key={index} className="res-ques">
-              {block.content}
+              <ReactMarkdown
+                remarkPlugins={[remarkMath, remarkGfm]}
+                rehypePlugins={[rehypeKatex, rehypeRaw]}
+              >
+                {block.content}
+              </ReactMarkdown>
             </div>
           );
         } else if (block.type === "answer") {

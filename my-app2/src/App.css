@@ -46,7 +46,7 @@ body {
 }
 
 h1 {
-  font-size: 2.7em;
+  font-size: 2.2em;
   color: var(--text-color);
   line-height: var(--space-sm);
   margin-bottom: var(--space-xss);
@@ -88,6 +88,11 @@ img {
 }
 p {
   margin-bottom: var(--space-sm);
+  line-height: 1.5;
+}
+li {
+ 
+  line-height: 1.5;
 }
 ul,
 ol {
@@ -204,7 +209,7 @@ tbody tr:hover {
   color: #07a;
 }
 .container {
-  max-width: 1200px;
+  max-width: 1000px;
   height:100%;
   margin: 0 auto;
   padding: 20px;
@@ -478,4 +483,59 @@ footer p {
   }
 
 
+}
+
+/* Enhanced KaTeX rendering for better math display */
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.5em 0;
+  margin: 1em 0 !important;
+  max-width: 100%;
+}
+
+/* Make inline math scale properly */
+.katex {
+  font-size: 1.1em;
+  max-width: 100%;
+}
+
+/* Ensure math equations don't overflow on small screens */
+.katex-display > .katex {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+/* Add horizontal scrolling to math that's too wide */
+.math {
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+}
+
+/* Better mobile support for containers */
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 15px;
+    width: calc(100% - 30px);
+  }
+  
+  /* Reduce font size of math on small screens */
+  .katex {
+    font-size: 1em;
+  }
+  
+  /* Make headings smaller on mobile */
+  h1 {
+    font-size: 1.8em;
+  }
+  
+  h2 {
+    font-size: 1.6em;
+  }
+  
+  h3, h4, h5, h6 {
+    font-size: 1.3em;
+  }
 }
