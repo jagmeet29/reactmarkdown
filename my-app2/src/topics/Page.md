@@ -1,6 +1,6 @@
 # Chinese Remainder Theorem
 
-:::question:
+:: :question:
 
 Solve the following system by the Chinese Remainder theorem:
 
@@ -11,9 +11,9 @@ x \equiv 3 \pmod{5} \\
 x \equiv 2 \pmod{7}
 \end{cases}
 $$
-:::
+:: :
 
-:::ok_hand:
+:: :ok_hand:
 
 ## Solution using the Chinese Remainder Theorem:
 
@@ -98,5 +98,5 @@ $$x \equiv 23 \pmod{105}$$
 
 Therefore, the solution to the system of congruences is $x \equiv 23 \pmod{105}$.
 
-:::
+:: :
 
